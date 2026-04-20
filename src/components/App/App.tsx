@@ -1,6 +1,5 @@
 import { useState } from "react";
 import css from "./App.module.css";
-import "./App.module.css";
 import NoteList from "../NoteList/NoteList.tsx";
 import Pagination from "../Pagination/Pagination.tsx";
 import type { Note } from "../../types/note.ts";
