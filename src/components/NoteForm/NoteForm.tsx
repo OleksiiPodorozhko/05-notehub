@@ -6,6 +6,7 @@ import {
 } from "../../services/noteService.ts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
 
 interface NoteFormProps {
   onClose: () => void;
@@ -56,7 +57,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
       title: values.title,
     });
     actions.resetForm();
-    //todo close?
+    toast.success("Note created");
   };
 
   return (
