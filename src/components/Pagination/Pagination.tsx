@@ -10,6 +10,10 @@ interface PaginationProps {
   setCurrentPage: (page: number) => void;
 }
 
+interface PageChangeEvent {
+  selected: number;
+}
+
 export default function Pagination({currentPage, totalPages, setCurrentPage} : PaginationProps) {
 
   return (
@@ -17,7 +21,9 @@ export default function Pagination({currentPage, totalPages, setCurrentPage} : P
       pageCount={totalPages}
       pageRangeDisplayed={5}
       marginPagesDisplayed={1}
-      onPageChange={({ selected }) => setCurrentPage(selected + 1)}
+      onPageChange={({ selected }: PageChangeEvent) =>
+        setCurrentPage(selected + 1)
+      }
       forcePage={currentPage - 1}
       containerClassName={css.pagination}
       activeClassName={css.active}
