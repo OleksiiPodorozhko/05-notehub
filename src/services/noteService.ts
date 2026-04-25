@@ -18,7 +18,7 @@ interface FetchNotesResponse {
   totalPages: number;
 }
 
-export type NoteId = Pick<Note, "id">;
+export type NoteId = Note["id"];
 
 export type CreateNoteRequest = Pick<Note, "title" | "content" | "tag">;
 

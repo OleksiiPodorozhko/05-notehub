@@ -18,8 +18,8 @@ export default function App() {
   const closeModal = () => setIsModalOpen(false);
 
   const { data, isSuccess, isLoading, isError } = useQuery({
-    queryKey: ["notes", currentPage, search], //todo add query
-    queryFn: () => fetchNotes(currentPage, search), //todo add query
+    queryKey: ["notes", currentPage, search],
+    queryFn: () => fetchNotes(currentPage, search),
     placeholderData: keepPreviousData,
   });
 
