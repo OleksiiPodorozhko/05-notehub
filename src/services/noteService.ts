@@ -27,11 +27,13 @@ export async function fetchNotes(
   pageNumber: number,
   search?: string,
 ): Promise<FetchNotesResponse> {
+  const hasSearch = search?.trim().length;
+
   const res = await api.get<FetchNotesResponse>(`/notes`, {
     params: {
       perPage: perPage,
       page: pageNumber,
-      ...(search ? { search } : {}),
+      ...(hasSearch ? { search } : {}),
     },
   });
   return res.data;
