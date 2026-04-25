@@ -2,13 +2,17 @@ import { useState } from "react";
 import css from "./App.module.css";
 import NoteList from "../NoteList/NoteList.tsx";
 import Pagination from "../Pagination/Pagination.tsx";
-import type { Note } from "../../types/note.ts";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { fetchNotes, perPage } from "../../services/noteService.ts";
+import { fetchNotes } from "../../services/noteService.ts";
+import Modal from "../Modal/Modal.tsx";
+import NoteForm from "../NoteForm/NoteForm.tsx";
 
 export default function App() {
-  // const [notes, setNotes] = useState<Note[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const { data, isSuccess, isLoading, isError } = useQuery({
     queryKey: ["notes", currentPage], //todo add query
@@ -30,13 +34,17 @@ export default function App() {
             currentPage={currentPage}
             totalPages={totalPages}
             setCurrentPage={setCurrentPage}
-            perPage={perPage}
           />
         )}
-        {/* Кнопка створення нотатки */}
+        <button className={css.button} onClick={openModal}>
+          Create note +
+        </button>
       </header>
       {notes.length > 0 && <NoteList notes={notes} />}
-      {/*{notes && notes.length > 0 && <NoteList notes={notes} />}*/}
+      {isModalOpen &&
+        <Modal onClose={closeModal}>
+          <NoteForm onClose={closeModal} />
+        </Modal>}
     </div>
   );
 }

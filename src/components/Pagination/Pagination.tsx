@@ -6,12 +6,11 @@ const ReactPaginate =
 
 interface PaginationProps {
   currentPage: number;
-  perPage: number;
   totalPages: number;
   setCurrentPage: (page: number) => void;
 }
 
-export default function Pagination({currentPage, perPage, totalPages, setCurrentPage} : PaginationProps) {
+export default function Pagination({currentPage, totalPages, setCurrentPage} : PaginationProps) {
 
   return (
     <ReactPaginate

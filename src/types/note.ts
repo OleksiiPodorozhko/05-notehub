@@ -7,6 +7,4 @@ export interface Note {
   tag: string;
 }
 
-export type NoteId = Pick<Note, "id">;
-
-export type CreateNoteRequest = Pick<Note, "title" | "content" | "tag">;
+export type NoteTag = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";

@@ -1,4 +1,4 @@
-import type { CreateNoteRequest, Note, NoteId } from "../types/note.ts";
+import type { Note } from "../types/note.ts";
 import axios from "axios";
 
 export const perPage = 12;
@@ -17,6 +17,10 @@ interface FetchNotesResponse {
   notes: Note[];
   totalPages: number;
 }
+
+export type NoteId = Pick<Note, "id">;
+
+export type CreateNoteRequest = Pick<Note, "title" | "content" | "tag">;
 
 //"Bearer ваш_токен"
 export async function fetchNotes(
