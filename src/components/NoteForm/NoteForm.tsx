@@ -50,13 +50,19 @@ export default function NoteForm({ onClose }: NoteFormProps) {
     values: NoteFormValues,
     actions: FormikHelpers<NoteFormValues>,
   ) => {
-    mutation.mutate({
-      content: values.content,
-      tag: values.tag,
-      title: values.title,
-    });
-    actions.resetForm();
-    toast.success("Note created");
+    mutation.mutate(
+      {
+        content: values.content,
+        tag: values.tag,
+        title: values.title,
+      },
+      {
+        onSuccess: () => {
+          actions.resetForm();
+          toast.success("Note created");
+        },
+      },
+    );
   };
 
   return (
