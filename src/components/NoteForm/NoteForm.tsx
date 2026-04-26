@@ -26,11 +26,10 @@ const NoteFormSchema = Yup.object().shape({
     .max(50, "Title is too long")
     .required("Title is required"),
   content: Yup.string()
-    .max(500, "Content is too long")
-    .required("Email is required"),
+    .max(500, "Content is too long"),
   tag: Yup.string()
-      .oneOf(["Todo", "Work", "Personal", "Meeting", "Shopping"], "Invalid tag")
-      .required("Tag is required")
+    .oneOf(["Todo", "Work", "Personal", "Meeting", "Shopping"], "Invalid tag")
+    .required("Tag is required"),
 });
 
 

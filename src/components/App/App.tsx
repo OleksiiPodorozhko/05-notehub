@@ -31,6 +31,7 @@ export default function App() {
   const handleSearch = useDebouncedCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       setSearch(e.target.value);
+      setCurrentPage(1);
     }, 300
   );
 
